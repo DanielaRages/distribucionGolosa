@@ -1,5 +1,5 @@
 package Herramienta;
-
+//
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -16,6 +16,25 @@ public class readerData <T> {
 			 path = "/ClientesEjemplo.csv";
 		path = "/centrosDistribucionEjemplo.csv";
 
+		//considerar casos bordes
+		try {
+			br = new BufferedReader (new FileReader (path));
+			String line = br.readLine();
+			while (line != null) {
+				String [] array = line.split(";");
+				//aca deberia de crear un objeto generico con los 3 parametros
+				//y que lo añada a arrayDatos
+				//otra opcion es hacer un if grande y repetir la parte del 
+				//codigo de try and catch para cliente y exactamente
+				//lo mismo para centrosDistrib
+				//arrayDatos.add();
+				line = br.readLine();
+			}		
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+			
 		return arrayDatos;
 	}
 
