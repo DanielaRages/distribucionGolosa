@@ -24,6 +24,7 @@ public class readerData <T> {
 				String [] array = line.split(";");
 				//aca deberia de crear un objeto generico con los 3 parametros
 				//y que lo añada a arrayDatos
+				
 				//otra opcion es hacer un if grande y repetir la parte del 
 				//codigo de try and catch para cliente y exactamente
 				//lo mismo para centrosDistrib
