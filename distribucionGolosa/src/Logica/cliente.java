@@ -13,10 +13,7 @@ public class cliente {
 
 	
 	
-	
-	
-	
-	
+
 	
 	
 	public String getNombre() {
