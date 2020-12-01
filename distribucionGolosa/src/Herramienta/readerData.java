@@ -13,7 +13,7 @@ public class readerData <T> {
 	//con los objetos del tipo que sean
 	public ArrayList<centroDistribucion> listaCentroDistribucion(){
 		String path;
-		ArrayList <centroDistribucion> arrayDatos = new ArrayList <centroDistribucion>();
+		ArrayList <centroDistribucion> arrayCentros = new ArrayList <centroDistribucion>();
 		BufferedReader br = null;
 //		if (parametro.equals("cliente")) 
 //			 path = "/ClientesEjemplo.csv";
@@ -35,7 +35,7 @@ public class readerData <T> {
 				//otra opcion es hacer un if grande y repetir la parte del 
 				//codigo de try and catch para cliente y exactamente
 				//lo mismo para centrosDistrib
-				arrayDatos.add(centro);
+				arrayCentros.add(centro);
 				line = br.readLine();
 			}		
 			
@@ -43,13 +43,13 @@ public class readerData <T> {
 			e.printStackTrace();
 		}
 			
-		return arrayDatos;
+		return arrayCentros;
 	}
 	
 	
 	public ArrayList<cliente> listaClientes(){
 		String path;
-		ArrayList <cliente> arrayDatos = new ArrayList <cliente>();
+		ArrayList <cliente> arrayClientes = new ArrayList <cliente>();
 		BufferedReader br = null;
 
      	path = "/ClientesEjemplo.csv";
@@ -71,7 +71,7 @@ public class readerData <T> {
 				//otra opcion es hacer un if grande y repetir la parte del 
 				//codigo de try and catch para cliente y exactamente
 				//lo mismo para centrosDistrib
-				arrayDatos.add(cliente);
+				arrayClientes.add(cliente);
 				line = br.readLine();
 			}		
 			
@@ -79,7 +79,7 @@ public class readerData <T> {
 			e.printStackTrace();
 		}
 			
-		return arrayDatos;
+		return arrayClientes;
 	}
 	
 
