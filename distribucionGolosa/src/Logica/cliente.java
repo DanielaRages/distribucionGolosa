@@ -10,11 +10,6 @@ public class cliente {
 		latitud = lat;
 		longitud = lon;
 	}
-
-	
-	
-
-	
 	
 	public String getNombre() {
 		return nombre;
@@ -26,6 +21,11 @@ public class cliente {
 
 	public double getLongitud() {
 		return longitud;
+	}
+
+	@Override
+	public String toString() {
+		return "cliente [nombre=" + nombre + ", latitud=" + latitud + ", longitud=" + longitud + "]";
 	}
 
 	

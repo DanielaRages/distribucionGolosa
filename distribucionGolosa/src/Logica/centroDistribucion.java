@@ -1,6 +1,6 @@
 package Logica;
 
-//considerar si vamos a llamarlos por "A" "B" o por numeros
+
 public class centroDistribucion {
 	private String identificacion;
 	private double latitud;
@@ -12,13 +12,7 @@ public class centroDistribucion {
 		longitud = log;
 	}
 
-	
-	
-	
-	
-	
-	
-	
+
 	
 	public String getIdentificacion() {
 		return identificacion;
@@ -30,6 +24,14 @@ public class centroDistribucion {
 
 	public double getLongitud() {
 		return longitud;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "centroDistribucion [identificacion=" + identificacion + ", latitud=" + latitud + ", longitud="
+				+ longitud + "]";
 	}
 	
 	

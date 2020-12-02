@@ -1,40 +1,30 @@
 package Herramienta;
-//
+
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.net.URL;
 import java.util.ArrayList;
 
 import Logica.centroDistribucion;
 import Logica.cliente;
 
-public class readerData <T> {
+public class readerData {
 	
-	//la idea es hacerlo generico para que lea los 2 csv y luego devuelva un arraylist
-	//con los objetos del tipo que sean
-	public ArrayList<centroDistribucion> listaCentroDistribucion(){
+	public static ArrayList<centroDistribucion> listaCentroDistribucion(){
 		String path;
 		ArrayList <centroDistribucion> arrayCentros = new ArrayList <centroDistribucion>();
 		BufferedReader br = null;
-//		if (parametro.equals("cliente")) 
-//			 path = "/ClientesEjemplo.csv";
-		path = "/centrosDistribucionEjemplo.csv";
+		path = "datosCsv/centrosDistribucion.csv";
 
-		//considerar casos bordes
 		try {
 			br = new BufferedReader (new FileReader (path));
 			String line = br.readLine();
 			while (line != null) {
 				String [] array = line.split(";");
-				//aca deberia de crear un objeto generico con los 3 parametros
-				//y que lo añada a arrayDatos
 				centroDistribucion centro = new centroDistribucion(
 											(array[0]),
-											Integer.parseInt(array[1]),
-											Integer.parseInt(array[2]));
-				
-				//otra opcion es hacer un if grande y repetir la parte del 
-				//codigo de try and catch para cliente y exactamente
-				//lo mismo para centrosDistrib
+											Double.parseDouble(array[1]),
+											Double.parseDouble(array[2]));
 				arrayCentros.add(centro);
 				line = br.readLine();
 			}		
@@ -47,41 +37,45 @@ public class readerData <T> {
 	}
 	
 	
-	public ArrayList<cliente> listaClientes(){
+	public static ArrayList<cliente> listaClientes(){
 		String path;
 		ArrayList <cliente> arrayClientes = new ArrayList <cliente>();
 		BufferedReader br = null;
 
-     	path = "/ClientesEjemplo.csv";
+     	path = "datosCsv/clientes.csv";
 		
-
-		//considerar casos bordes
 		try {
 			br = new BufferedReader (new FileReader (path));
 			String line = br.readLine();
 			while (line != null) {
 				String [] array = line.split(";");
-				//aca deberia de crear un objeto generico con los 3 parametros
-				//y que lo añada a arrayDatos
 				cliente cliente = new cliente(
 											(array[0]),
-											Integer.parseInt(array[1]),
-											Integer.parseInt(array[2]));
+											Double.parseDouble(array[1]),
+											Double.parseDouble((array[2])));
 				
-				//otra opcion es hacer un if grande y repetir la parte del 
-				//codigo de try and catch para cliente y exactamente
-				//lo mismo para centrosDistrib
 				arrayClientes.add(cliente);
 				line = br.readLine();
 			}		
 			
 		}catch (Exception e) {
 			e.printStackTrace();
-		}
-			
+		}	
 		return arrayClientes;
 	}
 	
+	public static void main(String args[]) {
+		ArrayList <cliente> test = listaClientes();
+		for (cliente c : test) {
+			System.out.println(c.toString());
+		}
+		
+		ArrayList<centroDistribucion> test2 = listaCentroDistribucion();
+		for (centroDistribucion c : test2) {
+			System.out.println(c.toString());
+		}
+		
+	}
 
 }
 
