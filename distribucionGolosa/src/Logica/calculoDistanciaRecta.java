@@ -2,7 +2,7 @@ package Logica;
 
 public class calculoDistanciaRecta {
 
-	public static double calcularSemiverseno(double latitud1, double longitud1, double latitud2, double longitud2) {
+	public double calcularSemiverseno(double latitud1, double longitud1, double latitud2, double longitud2) {
 
 	        double radioTierra = 6371; //dato en km
 
@@ -25,5 +25,6 @@ public class calculoDistanciaRecta {
 	        return distanciaKm;
 
 	    }
+	
 	
 }

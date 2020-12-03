@@ -13,7 +13,7 @@ public class calculoDistanciaRectaTest {
 	public void calcularDistancia() 
 	{
 		calculoDistanciaRecta distancia = new calculoDistanciaRecta();
-		double km = distancia.calcularSemiverseno(-54.807222, -68.304444, -53.783333,-67.7);
+		double km = distancia.calcularSemiverseno(-54.807222, -68.304444, -53.783333, -67.7);
 		assertTrue(km == 120.41768294002374);
 	}
 
