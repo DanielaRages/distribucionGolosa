@@ -11,7 +11,7 @@ import Logica.cliente;
 
 public class readerData {
 	
-	public static ArrayList<centroDistribucion> listaCentroDistribucion(){
+	public  ArrayList<centroDistribucion> listaCentroDistribucion(){
 		String path;
 		ArrayList <centroDistribucion> arrayCentros = new ArrayList <centroDistribucion>();
 		BufferedReader br = null;
@@ -38,7 +38,7 @@ public class readerData {
 	}
 	
 	
-	public static ArrayList<cliente> listaClientes(){
+	public  ArrayList<cliente> listaClientes(){
 		String path;
 		ArrayList <cliente> arrayClientes = new ArrayList <cliente>();
 		BufferedReader br = null;
@@ -64,27 +64,27 @@ public class readerData {
 		}	
 		return arrayClientes;
 	}
-	
-	public static void main(String args[]) {
-		ArrayList <cliente> listaDeClientes = listaClientes();
-		for (cliente c : listaDeClientes) {
-			System.out.println(c.toString());
-		}
-		
-		ArrayList<centroDistribucion> listaDeCentros = listaCentroDistribucion();
-		for (centroDistribucion c : listaDeCentros) {
-			System.out.println(c.toString());
-		}
-		
-		for (int i = 0; i < listaDeCentros.size(); i++) {
-			 calculoDistanciaRecta t = new calculoDistanciaRecta();
-			 double aux = 0;
-			for (int j = 0; j < listaDeClientes.size(); j++) {
-				aux += t.calcularSemiverseno(listaDeCentros.get(i).getLatitud(), listaDeCentros.get(i).getLongitud(), listaDeClientes.get(j).getLatitud(), listaDeClientes.get(i).getLongitud());
-			}
-			System.out.println("Distancia total centro con los clientes: " + aux);
-		}
-	}
+//	
+//	public static void main(String args[]) {
+//		ArrayList <cliente> listaDeClientes = listaClientes();
+//		for (cliente c : listaDeClientes) {
+//			System.out.println(c.toString());
+//		}
+//		
+//		ArrayList<centroDistribucion> listaDeCentros = listaCentroDistribucion();
+//		for (centroDistribucion c : listaDeCentros) {
+//			System.out.println(c.toString());
+//		}
+//		
+//		for (int i = 0; i < listaDeCentros.size(); i++) {
+//			 calculoDistanciaRecta t = new calculoDistanciaRecta();
+//			 double aux = 0;
+//			for (int j = 0; j < listaDeClientes.size(); j++) {
+//				aux += t.calcularSemiverseno(listaDeCentros.get(i).getLatitud(), listaDeCentros.get(i).getLongitud(), listaDeClientes.get(j).getLatitud(), listaDeClientes.get(i).getLongitud());
+//			}
+//			System.out.println("Distancia total centro con los clientes: " + aux);
+//		}
+//	}
 
 }
 
