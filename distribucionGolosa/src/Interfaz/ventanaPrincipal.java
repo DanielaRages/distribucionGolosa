@@ -2,18 +2,28 @@ package Interfaz;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
 
-import org.openstreetmap.gui.jmapviewer.Coordinate;
-import org.openstreetmap.gui.jmapviewer.JMapViewer;
-import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
-import org.openstreetmap.gui.jmapviewer.interfaces.MapMarker;
+import Logica.instancia;
+import readerData.readerData;
+
+import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 
 public class ventanaPrincipal {
-
 	private JFrame frame;
-	private JMapViewer mapa;
+	private mapaResultado mapa;
+	private JTextField txtCantidad;
+	//private readerData reader;
+	private instancia instancia;
 
 	/**
 	 * Launch the application.
@@ -42,22 +52,57 @@ public class ventanaPrincipal {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+	//	reader = new readerData();
+	//	reader.listaCentroDistribucion(); 
+		
+		
 		frame = new JFrame();
-		mapa = new JMapViewer();
-		frame.setBounds(680, 250, 700, 600);
+		frame.setBounds(650, 200, 700, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Distribucion Golosa");
-		Coordinate coordinada = new Coordinate(-34.550, -58.719);
-		mapa.setDisplayPosition(coordinada, 12);
-		//mapa.setZoomControlsVisible(false); -- oculta la barra
+		frame.getContentPane().setLayout(null);
 		
-		//Agregado de un marcador	
-		MapMarker marcador1 = new MapMarkerDot("aqui", coordinada);
-		marcador1.getStyle().setBackColor(Color.RED);
-		//marcador1.getStyle().setColor(Color.blue);
-		mapa.addMapMarker(marcador1);
+		JLabel lblTitulo = new JLabel("Distribucion Golosa");
+		lblTitulo.setFont(new Font("Adobe Gothic Std B", Font.PLAIN, 36));
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setBounds(62, 95, 539, 100);
+		frame.getContentPane().add(lblTitulo);
 		
-		frame.getContentPane().add(mapa);
+		JLabel lblEnunciado = new JLabel("Ingrese la cantidad de centros que se quiere obtener:");
+		lblEnunciado.setFont(new Font("Tahoma", Font.PLAIN, 14));
+//		lblEnunciado.setBounds(171, 107, 273, 165);
+		
+		lblEnunciado.setBounds(169, 238, 371, 59);
+		frame.getContentPane().add(lblEnunciado);
+		
+		txtCantidad = new JTextField();
+		txtCantidad.setBounds(268, 321, 139, 28);
+		frame.getContentPane().add(txtCantidad);
+		txtCantidad.setColumns(10);
+		
 	}
+//		
+//		JButton btnGuardar = new JButton("Guardar");
+//		btnGuardar.addMouseListener(new MouseAdapter() {
+//			@Override
+//			public void mouseClicked(MouseEvent e) {
+//				int cant = Integer.parseInt(txtCantidad.getText());
+//		//		if (cant > reader.getCantidadCentros()) {
+////					JOptionPane.showMessageDialog(null, "Cantidad de centros excedida.");
+////				}
+////				else {
+////					instancia = new instancia(cant);					
+////				}	
+////			}
+//		});
+//		btnGuardar.setBounds(293, 410, 89, 23);
+//		frame.getContentPane().add(btnGuardar);
+//		
+//		
+//	}
 
+	public JFrame getFrame() {
+		return frame;
+	}
 }

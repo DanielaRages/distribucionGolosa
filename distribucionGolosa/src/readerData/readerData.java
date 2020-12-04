@@ -10,8 +10,9 @@ import Logica.centroDistribucion;
 import Logica.cliente;
 
 public class readerData {
+	private int cantidadCentros;
 	
-	public  ArrayList<centroDistribucion> listaCentroDistribucion(){
+	public ArrayList<centroDistribucion> listaCentroDistribucion(){
 		String path;
 		ArrayList <centroDistribucion> arrayCentros = new ArrayList <centroDistribucion>();
 		BufferedReader br = null;
@@ -64,6 +65,14 @@ public class readerData {
 		}	
 		return arrayClientes;
 	}
+
+
+	public int getCantidadCentros() {
+		ArrayList<centroDistribucion> centros = listaCentroDistribucion(); 
+		return centros.size();
+	}
+	
+	
 //	
 //	public static void main(String args[]) {
 //		ArrayList <cliente> listaDeClientes = listaClientes();

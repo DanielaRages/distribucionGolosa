@@ -12,12 +12,12 @@ public class instancia {
 	readerData data = new readerData();
 	
 	
-	instancia(int cant){ //se inicializan
+	public instancia(int cant){ //se inicializan
+		centros = data.listaCentroDistribucion();
 		if(cant > centros.size())
 			throw new IllegalArgumentException ("La cantidad no debe superar a la cantidad de centros disponibles.");
-		cantidadCentrosAbrir = cant;
-		centros = data.listaCentroDistribucion();
 		clientes = data.listaClientes();
+		cantidadCentrosAbrir = cant;
 	}
 	
 
