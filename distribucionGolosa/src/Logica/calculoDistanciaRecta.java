@@ -2,9 +2,11 @@ package Logica;
 
 public class calculoDistanciaRecta {
 
+	//CALCULA LA DISTANCIA EN LINEA RECTA DE DOS PUNTOS SEGÚN SU LATITUD Y LONGITUD
+	//UTILIZA LA FÓRMULA DEL SEMIVERSENO PARA CALCULARLO
 	public double calcularSemiverseno(double latitud1, double longitud1, double latitud2, double longitud2) {
 
-	        double radioTierra = 6371; //dato en km
+	        double radioTierra = 6371; //Dato en KM
 
 	        latitud1 = Math.toRadians(latitud1);
 	        longitud1 = Math.toRadians(longitud1);
@@ -23,8 +25,5 @@ public class calculoDistanciaRecta {
 	        double distanciaKm = radioTierra * c;
 
 	        return distanciaKm;
-
 	    }
-	
-	
 }
