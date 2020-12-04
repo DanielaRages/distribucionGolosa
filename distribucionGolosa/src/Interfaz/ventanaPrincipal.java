@@ -22,7 +22,7 @@ public class ventanaPrincipal {
 	private JFrame frame;
 	private mapaResultado mapa;
 	private JTextField txtCantidad;
-	//private readerData reader;
+	private readerData reader;
 	private instancia instancia;
 
 	/**
@@ -53,7 +53,7 @@ public class ventanaPrincipal {
 	 */
 	private void initialize() {
 		
-	//	reader = new readerData();
+		reader = new readerData();
 	//	reader.listaCentroDistribucion(); 
 		
 		
@@ -81,26 +81,25 @@ public class ventanaPrincipal {
 		frame.getContentPane().add(txtCantidad);
 		txtCantidad.setColumns(10);
 		
+		
+		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int cant = Integer.parseInt(txtCantidad.getText());		
+				if (cant > reader.CantDeCentroDistribucion()) {
+					JOptionPane.showMessageDialog(null, "Cantidad de centros excedida.");
+				}
+				else {
+					instancia = new instancia(cant);					
+				}	
+			}
+		});
+		btnGuardar.setBounds(293, 410, 89, 23);
+		frame.getContentPane().add(btnGuardar);
+		
+		
 	}
-//		
-//		JButton btnGuardar = new JButton("Guardar");
-//		btnGuardar.addMouseListener(new MouseAdapter() {
-//			@Override
-//			public void mouseClicked(MouseEvent e) {
-//				int cant = Integer.parseInt(txtCantidad.getText());
-//		//		if (cant > reader.getCantidadCentros()) {
-////					JOptionPane.showMessageDialog(null, "Cantidad de centros excedida.");
-////				}
-////				else {
-////					instancia = new instancia(cant);					
-////				}	
-////			}
-//		});
-//		btnGuardar.setBounds(293, 410, 89, 23);
-//		frame.getContentPane().add(btnGuardar);
-//		
-//		
-//	}
 
 	public JFrame getFrame() {
 		return frame;
