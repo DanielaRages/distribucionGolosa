@@ -10,17 +10,20 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 
+import Logica.algoritmoGoloso;
+import Logica.centroDistribucion;
 import Logica.instancia;
 import readerData.readerData;
 
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 
 public class ventanaPrincipal {
 	private JFrame frame;
-	private mapaResultado mapa;
+	private mapaResultado mapa; 
 	private JTextField txtCantidad;
 	private readerData reader;
 	private instancia instancia;
@@ -91,7 +94,14 @@ public class ventanaPrincipal {
 					JOptionPane.showMessageDialog(null, "Cantidad de centros excedida.");
 				}
 				else {
-					instancia = new instancia(cant);					
+					instancia = new instancia(cant);
+					algoritmoGoloso g = new algoritmoGoloso(instancia);
+					g.calcularDistanciaCentro();
+					ArrayList<centroDistribucion> listaDefinitiva = g.abrirCentros();
+					mapa = new mapaResultado(listaDefinitiva);
+					mapa.getFrame().setVisible(true);
+					frame.setVisible(false);
+					
 				}	
 			}
 		});

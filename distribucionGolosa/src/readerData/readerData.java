@@ -3,6 +3,8 @@ package readerData;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+
+import Logica.calculoDistanciaRecta;
 import Logica.centroDistribucion;
 import Logica.cliente;
 
@@ -86,10 +88,8 @@ public class readerData {
         }
         return cont;
     }
-	
-	public static void main(String args[]) {
-		readerData d = new readerData();
-		System.out.println(d.CantDeCentroDistribucion());
-	}
+		
 }
+
+
 

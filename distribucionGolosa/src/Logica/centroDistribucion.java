@@ -56,6 +56,6 @@ public class centroDistribucion implements Comparable<centroDistribucion>{
 	//MÉTODO COMPARABLE PARA HACER EL ORDENAMIENTO
 	@Override
 	public int compareTo(centroDistribucion c) {
-		return this.compareTo(c);
+		return  (int) this.getDistanciaConClientes() - (int) c.getDistanciaConClientes();
 	}
 }
