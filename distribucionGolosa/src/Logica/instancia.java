@@ -26,15 +26,24 @@ public class instancia {
 	public int getCantidadCentrosAbrir() {
 		return cantidadCentrosAbrir;
 	}
-
-	@SuppressWarnings("unchecked")
-	public ArrayList<centroDistribucion> getCentros() { //ENTREGA UNA COPIA DE LA LISTA
-		return (ArrayList<centroDistribucion>) centros.clone();
+	
+	public ArrayList<centroDistribucion> getCentros() {
+		return centros;
+	}
+	
+	public ArrayList<cliente> getClientes() {
+		return clientes;
 	}
 
-	@SuppressWarnings("unchecked")
-	public ArrayList<cliente> getClientes() { //ENTREGA UNA COPIA DE LA LISTA
-		return (ArrayList<cliente>) clientes.clone();
-	}
+//	@SuppressWarnings("unchecked")
+//	public ArrayList<centroDistribucion> getCentros() { //ENTREGA UNA COPIA DE LA LISTA
+//		return (ArrayList<centroDistribucion>) centros.clone();
+//	}
+//	
+//
+//	@SuppressWarnings("unchecked")
+//	public ArrayList<cliente> getClientes() { //ENTREGA UNA COPIA DE LA LISTA
+//		return (ArrayList<cliente>) clientes.clone();
+//	}
 	
 }

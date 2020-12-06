@@ -1,13 +1,25 @@
 package Test;
 
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
+
+import Logica.algoritmoGoloso;
+import Logica.instancia;
 
 public class algoritmoGolosoTest {
 	
 	@Test
-	void calcularDistanciaCentro() {
+	public void calcularDistanciaCentroTest() {
 		
-		//assertTrue con la distancia total ya calculada
+		instancia i = new instancia(1);
+		algoritmoGoloso algoritmo = new algoritmoGoloso(i);
+		algoritmo.calcularDistanciaCentro();
+		assertTrue(i.getCentros().get(0).getDistanciaConClientes() == 11.225523227019298);
+		
 	}
+	
+	@Test
+	public void 
 
 }

@@ -12,18 +12,25 @@ public class algoritmoGoloso {
 	public algoritmoGoloso(instancia inst){instancia = inst;}
 	
 	//CALCULA LA DISTANCIA DE UN CENTRO CON CADA CLIENTE
-	public void calcularDistanciaCentro() { //Añade a cada uno de los centros la distancia total de los clientes hacia el.
-		
-		calculoDistanciaRecta calculo = new calculoDistanciaRecta(); 
+	 public void calcularDistanciaCentro() { //Añade a cada uno de los centros la distancia total de los clientes hacia el.
 		
 		for (centroDistribucion centro: instancia.getCentros()) {
+			calcularDistancia(centro);
+		}
+	}
+	
+	private void calcularDistancia(centroDistribucion centro) 
+	{
+		calculoDistanciaRecta calculo = new calculoDistanciaRecta(); 
+		
 			double aux = 0;
 			for (cliente cliente: instancia.getClientes()) {
 				aux += calculo.calcularSemiverseno(centro.getLatitud(), centro.getLongitud(), cliente.getLatitud(), cliente.getLongitud());
 			}
 			centro.setDistanciaTotalConClientes(aux);
-		}
+		
 	}
+	
 	
 	//ORDENAMIENTO DE LOS CENTROS EN MENOR A MAYOR COSTO 
 	public ArrayList<centroDistribucion> ordenarCentros(){
@@ -67,13 +74,13 @@ public class algoritmoGoloso {
 	}
 	
 	public static void main(String args[]) {
-		instancia i = new instancia(3);
-		algoritmoGoloso n = new algoritmoGoloso(i);
-		n.calcularDistanciaCentro();
-	//	n.ordenarCentros();
-	//	ArrayList<centroDistribucion> definitiva = n.abrirCentros();
-	//	for (centroDistribucion d : i.getCentros()) {
-	//		System.out.println(d.toString());
-	//	}
-	}
+        instancia i = new instancia(1);
+        algoritmoGoloso n = new algoritmoGoloso(i);
+        n.calcularDistancia(i.getCentros().get(0));
+    //    n.ordenarCentros();
+    //    ArrayList<centroDistribucion> definitiva = n.abrirCentros();
+        for (centroDistribucion d : i.getCentros()) {
+            System.out.println(d.toString());
+        }
+    }
 }

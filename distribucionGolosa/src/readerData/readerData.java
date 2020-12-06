@@ -4,16 +4,18 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 
+import Logica.algoritmoGoloso;
 import Logica.calculoDistanciaRecta;
 import Logica.centroDistribucion;
 import Logica.cliente;
+import Logica.instancia;
 
 public class readerData {
 
 	
 	//MÉTODO QUE LEE Y DEVUELVE LA LISTA DE CENTROS DESDE UNA PLANILLA DE EXCEL
 
-	public ArrayList<centroDistribucion> listaCentroDistribucion(){
+	public static ArrayList<centroDistribucion> listaCentroDistribucion(){
 		String path;
 		ArrayList <centroDistribucion> arrayCentros = new ArrayList <centroDistribucion>();
 		BufferedReader br = null;
@@ -24,6 +26,11 @@ public class readerData {
 			String line = br.readLine();
 			while (line != null) {
 				String [] array = line.split(";");
+				if(array.length!=3) 
+				{
+					br.close();
+					throw new IllegalArgumentException ("No debe de estar vacia ninguna de las casillas del csv.");
+				}
 				centroDistribucion centro = new centroDistribucion(
 											(array[0]),
 											Double.parseDouble(array[1]),
@@ -39,7 +46,8 @@ public class readerData {
 	}
 	
 	//MÉTODO QUE LEE Y DEVUELVE LA LISTA DE CLIENTES DESDE UNA PLANILLA DE EXCEL
-	public ArrayList<cliente> listaClientes(){
+	
+	public static ArrayList<cliente> listaClientes(){
 		String path;
 		ArrayList <cliente> arrayClientes = new ArrayList <cliente>();
 		BufferedReader br = null;
@@ -51,6 +59,11 @@ public class readerData {
 			String line = br.readLine();
 			while (line != null) {
 				String [] array = line.split(";");
+				if(array.length!=3) 
+				{
+					br.close();
+					throw new IllegalArgumentException ("No debe de estar vacia ninguna de las casillas del csv.");
+				}
 				cliente cliente = new cliente(
 											(array[0]),
 											Double.parseDouble(array[1]),
@@ -89,7 +102,9 @@ public class readerData {
         return cont;
     }
 		
-}
 
+
+
+}
 
 
