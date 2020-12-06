@@ -52,11 +52,10 @@ public class algoritmoGoloso {
 	//DEVUELVE EL PROMEDIO DE TODOS LOS CENTROS
 	public double promedioDistanciaTodosLosCentros() {
 		double centros = 0;
-		double promedioTotal = 0;
 		for(centroDistribucion centro : instancia.getCentros()) {
-			centros += centro.getPromedioDistanciaConClientes();
+			centros += centro.getDistanciaConClientes();
 		}
-		promedioTotal = centros / instancia.getCentros().size();
+		double promedioTotal = centros / instancia.getCentros().size();
 		return promedioTotal;
 	}
 	
@@ -74,10 +73,10 @@ public class algoritmoGoloso {
 	}
 	
 	public static void main(String args[]) {
-        instancia i = new instancia(1);
+        instancia i = new instancia(3);
         algoritmoGoloso n = new algoritmoGoloso(i);
-        n.calcularDistancia(i.getCentros().get(0));
-    //    n.ordenarCentros();
+        n.calcularDistanciaCentro();
+        n.ordenarCentros();
     //    ArrayList<centroDistribucion> definitiva = n.abrirCentros();
         for (centroDistribucion d : i.getCentros()) {
             System.out.println(d.toString());

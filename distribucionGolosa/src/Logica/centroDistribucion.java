@@ -45,6 +45,23 @@ public class centroDistribucion implements Comparable<centroDistribucion>{
 	public void setPromedioDistanciaConClientes(double promedioDistanciaConClientes) {
 		this.promedioDistanciaConClientes = promedioDistanciaConClientes;
 	}
+	
+	//SOBRESCRIBE EL MÉTODO EQUALS
+		@Override
+		public boolean equals(Object obj){
+			
+			if(this.getClass() != obj.getClass()) {return false;}
+		   
+	    	centroDistribucion otro = (centroDistribucion) obj;
+	    	
+	    	if(this.getIdentificacion().equals(otro.getIdentificacion()) &&
+				this.getLatitud() == otro.getLatitud() &&
+				this.getLongitud() == otro.getLongitud()) 
+	    		
+	    	{return true;}
+	    	
+	    	else {return false;}
+	   }
 
 	//MÉTODO TOSTRING
 	@Override

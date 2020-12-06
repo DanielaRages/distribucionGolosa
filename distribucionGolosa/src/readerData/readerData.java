@@ -5,7 +5,6 @@ import java.io.FileReader;
 import java.util.ArrayList;
 
 import Logica.algoritmoGoloso;
-import Logica.calculoDistanciaRecta;
 import Logica.centroDistribucion;
 import Logica.cliente;
 import Logica.instancia;
@@ -15,7 +14,7 @@ public class readerData {
 	
 	//MÉTODO QUE LEE Y DEVUELVE LA LISTA DE CENTROS DESDE UNA PLANILLA DE EXCEL
 
-	public static ArrayList<centroDistribucion> listaCentroDistribucion(){
+	public ArrayList<centroDistribucion> listaCentroDistribucion(){
 		String path;
 		ArrayList <centroDistribucion> arrayCentros = new ArrayList <centroDistribucion>();
 		BufferedReader br = null;
@@ -47,7 +46,7 @@ public class readerData {
 	
 	//MÉTODO QUE LEE Y DEVUELVE LA LISTA DE CLIENTES DESDE UNA PLANILLA DE EXCEL
 	
-	public static ArrayList<cliente> listaClientes(){
+	public ArrayList<cliente> listaClientes(){
 		String path;
 		ArrayList <cliente> arrayClientes = new ArrayList <cliente>();
 		BufferedReader br = null;
@@ -102,7 +101,16 @@ public class readerData {
         return cont;
     }
 		
-
+	public static void main(String args[]) {
+        instancia i = new instancia(3);
+        algoritmoGoloso n = new algoritmoGoloso(i);
+        n.calcularDistanciaCentro();
+    //    n.ordenarCentros();
+    //    ArrayList<centroDistribucion> definitiva = n.abrirCentros();
+        for (centroDistribucion d : i.getCentros()) {
+            System.out.println(d.toString());
+        }
+    }
 
 
 }
