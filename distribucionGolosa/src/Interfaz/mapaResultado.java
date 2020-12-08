@@ -1,85 +1,70 @@
 package Interfaz;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.util.ArrayList;
-
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 import org.openstreetmap.gui.jmapviewer.Coordinate;
 import org.openstreetmap.gui.jmapviewer.JMapViewer;
 import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
 import org.openstreetmap.gui.jmapviewer.interfaces.MapMarker;
-
 import Logica.centroDistribucion;
-
-import java.awt.BorderLayout;
+import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class mapaResultado {
 
+	//VARIABLES
 	private JFrame frame;
 	private JMapViewer mapa;
 
-//	/**
-//	 * Launch the application.
-//	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					mapaResultado window = new mapaResultado();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-	/**
-	 * Create the application.
-	 */
+	//CONSTRUYE EL MAPA CON LOS RESULTADOS DEL ALGORITMO
 	public mapaResultado(ArrayList<centroDistribucion> centrosDefinitivos) {
 		initialize();
 		ilustrarCentros(centrosDefinitivos);
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+	//INICIALIZA EL CONTENIDO DEL FRAME
 	private void initialize() {
 		frame = new JFrame();
 		mapa = new JMapViewer();
 		frame.setBounds(650, 200, 700, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Distribucion Golosa");
-		Coordinate coordinadaUbicacion = new Coordinate(-34.550, -58.719);
-		mapa.setDisplayPosition(coordinadaUbicacion, 12);
+		Coordinate coordenadaUbicacion = new Coordinate(-34.54122953311153, -58.71367855692343);
+		mapa.setDisplayPosition(coordenadaUbicacion, 12);
 		//mapa.setZoomControlsVisible(false); -- oculta la barra de zoom
 		
-		//Agregado de un marcador	
-		MapMarker marcador1 = new MapMarkerDot("aqui", coordinadaUbicacion);
-		marcador1.getStyle().setBackColor(Color.RED);
-		//marcador1.getStyle().setColor(Color.blue);
-		mapa.addMapMarker(marcador1);
-		
+		//AGREGA UN MARCADOR USTED ESTÁ AQUÍ	
+		MapMarker marcador = new MapMarkerDot("Usted está aquí", coordenadaUbicacion);
+		marcador.getStyle().setBackColor(Color.RED);
+		mapa.addMapMarker(marcador);
 		frame.getContentPane().add(mapa);
 		mapa.setLayout(null);
+		
+		//BOTÓN CONTINUAR
+		JButton Botón = new JButton("Continuar");
+		Botón.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				estadisticas vent = new estadisticas();
+				vent.getFrame().setVisible(true);
+				frame.dispose();
+			}
+		});
+		Botón.setBounds(572, 532, 85, 21);
+		mapa.add(Botón);
 	}
 	
+	//MÉTODO QUE MUESTRA LOS CENTROS DE DISTRIBUCIÓN EN EL MAPA
 	void ilustrarCentros(ArrayList<centroDistribucion> centrosDefinitivos) {
-		//Coordinate coordinada = new Coordinate()
 		for (centroDistribucion centro : centrosDefinitivos) {
-			Coordinate coordinada = new Coordinate(centro.getLatitud(), centro.getLongitud());
-			MapMarker marcador = new MapMarkerDot(centro.getIdentificacion(), coordinada);
+			Coordinate coordenada = new Coordinate(centro.getLatitud(), centro.getLongitud());
+			MapMarker marcador = new MapMarkerDot(centro.getIdentificacion(), coordenada);
 			mapa.addMapMarker(marcador);
 		}
 	}
-
 	
-	public JFrame getFrame() {
-		return frame;
-	}
-	
+	//GETTER
+	public JFrame getFrame() {return frame;}
 }

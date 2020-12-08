@@ -20,7 +20,8 @@ public class algoritmoGolosoTest {
 	@Test
 	public void calcularDistanciaCentroTest() {
 		
-		instancia i = new instancia(1);
+		instancia i = new instancia();
+		i.setCantidadCentrosAbrir(1);
 		algoritmoGoloso algoritmo = new algoritmoGoloso(i);
 		algoritmo.calcularDistanciaCentro();
 		assertTrue(i.getCentros().get(0).getDistanciaConClientes() == 11.225523227019298);
@@ -30,7 +31,8 @@ public class algoritmoGolosoTest {
 	@Test
 	public void ordenarCentrosTest() 
 	{
-		instancia i = new instancia(4);
+		instancia i = new instancia();
+		i.setCantidadCentrosAbrir(4);
 		algoritmoGoloso algoritmo = new algoritmoGoloso(i);
 		algoritmo.calcularDistanciaCentro();
 		algoritmo.ordenarCentros();
@@ -45,7 +47,8 @@ public class algoritmoGolosoTest {
 	@Test
 	public void promedioDistanciaClientesCentroTest() 
 	{
-		instancia i = new instancia(4);
+		instancia i = new instancia();
+		i.setCantidadCentrosAbrir(4);
 		algoritmoGoloso algoritmo = new algoritmoGoloso(i);
 		algoritmo.calcularDistanciaCentro();
 		algoritmo.promedioDistanciaClientesCentro();
@@ -55,7 +58,8 @@ public class algoritmoGolosoTest {
 	@Test
 	public void promedioDistanciaTodosLosCentrosTest() 
 	{
-		instancia i = new instancia(4);
+		instancia i = new instancia();
+		i.setCantidadCentrosAbrir(4);
 		algoritmoGoloso algoritmo = new algoritmoGoloso(i);
 		algoritmo.calcularDistanciaCentro();
 		algoritmo.promedioDistanciaClientesCentro();
@@ -66,7 +70,8 @@ public class algoritmoGolosoTest {
 	@Test
 	public void abrirCentrosTest() 
 	{
-		instancia i = new instancia(2);
+		instancia i = new instancia();
+		i.setCantidadCentrosAbrir(2);
 		algoritmoGoloso algoritmo = new algoritmoGoloso(i);
 		algoritmo.calcularDistanciaCentro();
 		algoritmo.ordenarCentros();

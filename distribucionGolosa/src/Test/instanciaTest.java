@@ -11,7 +11,8 @@ public class instanciaTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void NumeroInvalidoTest() 
 	{
-		instancia i = new instancia(5);
+		instancia i = new instancia();
+		i.setCantidadCentrosAbrir(5);
 	}
 
 }

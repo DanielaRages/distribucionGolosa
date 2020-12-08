@@ -14,14 +14,16 @@ public class instancia {
 	
 
 	//CONSTRUCTOR
-	public instancia(int cant){ //PIDE LA CANTIDAD DE CENTROS QUE DESEA ABRIR
+	public instancia(){ //PIDE LA CANTIDAD DE CENTROS QUE DESEA ABRIR
 		centros = data.listaCentroDistribucion();
 		clientes = data.listaClientes();
-		if(cant > centros.size())
-			throw new IllegalArgumentException ("La cantidad no debe superar a la cantidad de centros disponibles.");
-		cantidadCentrosAbrir = cant;
 	}
 	
+	public void setCantidadCentrosAbrir(int cant) {
+		if(cant > centros.size())
+		throw new IllegalArgumentException ("La cantidad no debe superar a la cantidad de centros disponibles.");
+	cantidadCentrosAbrir = cant;
+	}
 	//GETTERS
 	public int getCantidadCentrosAbrir() {
 		return cantidadCentrosAbrir;

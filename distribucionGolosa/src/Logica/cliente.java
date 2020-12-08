@@ -15,17 +15,11 @@ public class cliente {
 	}
 	
 	//GETTERS
-	public String getNombre() {
-		return nombre;
-	}
+	public String getNombre() {return nombre;}
 
-	public double getLatitud() {
-		return latitud;
-	}
+	public double getLatitud() {return latitud;}
 
-	public double getLongitud() {
-		return longitud;
-	}
+	public double getLongitud() {return longitud;}
 	
 	//SOBRESCRIBE EL MÉTODO EQUALS
 			@Override
@@ -47,7 +41,6 @@ public class cliente {
 	//MÉTODO TOSTRING
 	@Override
 	public String toString() {
-		return "cliente [nombre=" + nombre + ", latitud=" + latitud + ", longitud=" + longitud + "]";
+		return nombre + ": Latitud: " + latitud + ", Longitud :" + longitud;
 	}
-
 }

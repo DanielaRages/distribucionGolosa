@@ -102,7 +102,8 @@ public class readerData {
     }
 		
 	public static void main(String args[]) {
-        instancia i = new instancia(3);
+        instancia i = new instancia();
+        i.setCantidadCentrosAbrir(3);
         algoritmoGoloso n = new algoritmoGoloso(i);
         n.calcularDistanciaCentro();
     //    n.ordenarCentros();

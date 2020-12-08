@@ -17,25 +17,15 @@ public class centroDistribucion implements Comparable<centroDistribucion>{
 	}
 
 	//GETTERS
-	public String getIdentificacion() {
-		return identificacion;
-	}
+	public String getIdentificacion() {return identificacion;}
 
-	public double getLatitud() {
-		return latitud;
-	}
+	public double getLatitud() {return latitud;}
 
-	public double getLongitud() {
-		return longitud;
-	}
+	public double getLongitud() {return longitud;}
 
-	public double getDistanciaConClientes() {
-		return distanciaTotalConClientes;
-	}
+	public double getDistanciaConClientes() {return distanciaTotalConClientes;}
 	
-	public double getPromedioDistanciaConClientes() {
-		return promedioDistanciaConClientes;
-	}
+	public double getPromedioDistanciaConClientes() {return promedioDistanciaConClientes;}
 	
 	//SETTERS
 	public void setDistanciaTotalConClientes(double distanciaTotalConClientes) {
@@ -66,8 +56,8 @@ public class centroDistribucion implements Comparable<centroDistribucion>{
 	//MÉTODO TOSTRING
 	@Override
 	public String toString() {
-		return "centroDistribucion [identificacion=" + identificacion + ", latitud=" + latitud + ", longitud="
-				+ longitud + ", distanciaConClientes=" + distanciaTotalConClientes + "]";
+		return identificacion + ": Latitud: " + latitud + ", Longitud :"
+				+ longitud + ", Distancia con los clientes: " + distanciaTotalConClientes + ", Promedio de distancia con los clientes: " + promedioDistanciaConClientes;
 	}
 
 	//MÉTODO COMPARABLE PARA HACER EL ORDENAMIENTO
