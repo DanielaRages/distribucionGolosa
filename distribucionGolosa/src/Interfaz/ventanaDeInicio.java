@@ -36,6 +36,7 @@ public class ventanaDeInicio {
 		Título.setBounds(159, 52, 373, 82);
 		frame.getContentPane().add(Título);
 		
+		//BOTÓN PARA CONTINUAR AL MAPA DONDE SE MUESTRAN LOS DATOS
 		JButton Botón = new JButton("Continuar");
 		Botón.addMouseListener(new MouseAdapter() {
 			@Override
@@ -59,7 +60,6 @@ public class ventanaDeInicio {
 		frame.getContentPane().add(Texto);
 	}
 	
-	public JFrame getFrame() {
-		return frame;
-	}
+	//GETTER
+	public JFrame getFrame() {return frame;}
 }

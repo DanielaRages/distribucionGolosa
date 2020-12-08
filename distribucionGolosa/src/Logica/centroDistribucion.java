@@ -53,13 +53,6 @@ public class centroDistribucion implements Comparable<centroDistribucion>{
 	    	else {return false;}
 	   }
 
-	//MÉTODO TOSTRING
-	@Override
-	public String toString() {
-		return identificacion + ": Latitud: " + latitud + ", Longitud :"
-				+ longitud + ", Distancia con los clientes: " + distanciaTotalConClientes + ", Promedio de distancia con los clientes: " + promedioDistanciaConClientes;
-	}
-
 	//MÉTODO COMPARABLE PARA HACER EL ORDENAMIENTO
 	@Override
 	public int compareTo(centroDistribucion c) {

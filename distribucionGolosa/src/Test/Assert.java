@@ -1,7 +1,6 @@
 package Test;
 
 import java.util.ArrayList;
-
 import Logica.centroDistribucion;
 import Logica.cliente;
 

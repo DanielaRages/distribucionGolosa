@@ -14,18 +14,19 @@ public class algoritmoGoloso {
 	//AÑADE A CADA UNO DE LOS CENTROS LA DISTANCIA TOTAL DE LOS CLIENTES HACIA EL.
 	public void calcularDistanciaCentro() { 
 		for (centroDistribucion centro: instancia.getCentros()) {
-			calcularDistancia(centro);
+			centro.setDistanciaTotalConClientes(calcularDistancia(centro));
 		}
 	}
 	
 	//CALCULA LA DISTANCIA DE UN CENTRO CON CADA CLIENTE
-	private void calcularDistancia(centroDistribucion centro) {
+	private double calcularDistancia(centroDistribucion centro) {
 		calculoDistanciaRecta calculo = new calculoDistanciaRecta(); 
 		double aux = 0;
 		for (cliente cliente: instancia.getClientes()) {
 			aux += calculo.calcularSemiverseno(centro.getLatitud(), centro.getLongitud(), cliente.getLatitud(), cliente.getLongitud());
 		}
-		centro.setDistanciaTotalConClientes(aux);	
+		centro.setDistanciaTotalConClientes(aux);
+		return aux;
 	}
 	
 	//ORDENAMIENTO DE LOS CENTROS EN MENOR A MAYOR COSTO 
@@ -36,7 +37,7 @@ public class algoritmoGoloso {
 	}
 	
 	//CALCULA EL PROMEDIO DE DISTANCIAS DE LOS CLIENTES CON UN CENTRO
-	public ArrayList<centroDistribucion> promedioDistanciaClientesCentro() {
+	public void promedioDistanciaClientesCentro() {
 		double promedioDistancia = 0;
 		ArrayList<centroDistribucion> centros = new ArrayList<>();
 		for(centroDistribucion centro : instancia.getCentros()) {
@@ -44,17 +45,18 @@ public class algoritmoGoloso {
 			centro.setPromedioDistanciaConClientes(promedioDistancia);
 			centros.add(centro);
 		}
-		return centros;
 	}
 	
 	//DEVUELVE EL PROMEDIO DE TODOS LOS CENTROS
 	public double promedioDistanciaTodosLosCentros() {
 		double centros = 0;
+		double promTotal = 0;
 		for(centroDistribucion centro : instancia.getCentros()) {
 			centros += centro.getDistanciaConClientes();
 		}
-		double promedioTotal = centros / instancia.getCentros().size();
-		return promedioTotal;
+		promTotal = centros / instancia.getCentros().size();
+		instancia.setPromedioTotal(promTotal);
+		return promTotal;
 	}
 	
 	//DEVUELVE LOS CENTROS QUE CUMPLEN CON LA CONDICIÓN PARA SER SELECCIONADOS	
@@ -68,24 +70,5 @@ public class algoritmoGoloso {
 			}
 		}
 		return centrosAbrir;
-	}
-	
-//	public static void main(String args[]) {
-//        instancia i = new instancia();
-//        i.setCantidadCentrosAbrir(3);
-//        algoritmoGoloso n = new algoritmoGoloso(i);
-//        n.calcularDistanciaCentro();
-//        n.ordenarCentros();
-//        for (centroDistribucion d : i.getCentros()) {
-//            System.out.println(d.toString());
-//        }
-//    }
-	public static void main (String [] args) {
-		instancia i = new instancia();
-		i.setCantidadCentrosAbrir(4);
-		algoritmoGoloso alg = new algoritmoGoloso(i);
-		System.out.println(alg.promedioDistanciaClientesCentro());
-		System.out.println(alg.promedioDistanciaTodosLosCentros());
-		System.out.println(i.getClientes());
 	}
 }

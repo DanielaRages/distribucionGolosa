@@ -1,11 +1,8 @@
 package Test;
 
 import static org.junit.Assert.assertTrue;
-
 import java.util.ArrayList;
-
 import org.junit.Test;
-
 import Logica.algoritmoGoloso;
 import Logica.centroDistribucion;
 import Logica.instancia;

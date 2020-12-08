@@ -4,8 +4,6 @@ import org.junit.Test;
 
 import Logica.instancia;
 
-
-
 public class instanciaTest {
 	
 	@Test(expected = IllegalArgumentException.class)

@@ -22,25 +22,19 @@ public class cliente {
 	public double getLongitud() {return longitud;}
 	
 	//SOBRESCRIBE EL MÉTODO EQUALS
-			@Override
-			public boolean equals(Object obj){
-				
-				if(this.getClass() != obj.getClass()) {return false;}
-			   
-		    	cliente otro = (cliente) obj;
-		    	
-		    	if(this.getNombre().equals(otro.getNombre()) &&
-					this.getLatitud() == otro.getLatitud() &&
-					this.getLongitud() == otro.getLongitud()) 
-		    		
-		    	{return true;}
-		    	
-		    	else {return false;}
-		   }
-
-	//MÉTODO TOSTRING
 	@Override
-	public String toString() {
-		return nombre + ": Latitud: " + latitud + ", Longitud :" + longitud;
+	public boolean equals(Object obj){
+		
+		if(this.getClass() != obj.getClass()) {return false;}
+	   
+    	cliente otro = (cliente) obj;
+    	
+    	if(this.getNombre().equals(otro.getNombre()) &&
+			this.getLatitud() == otro.getLatitud() &&
+			this.getLongitud() == otro.getLongitud()) 
+    		
+    	{return true;}
+    	
+    	else {return false;}
 	}
 }

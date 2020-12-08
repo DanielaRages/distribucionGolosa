@@ -8,6 +8,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import Logica.algoritmoGoloso;
 import Logica.centroDistribucion;
+import Logica.cliente;
 import Logica.instancia;
 import readerData.readerData;
 import javax.swing.JButton;
@@ -64,29 +65,47 @@ public class ventanaPrincipal {
 		btnGuardar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				int cant = Integer.parseInt(txtCantidad.getText());		
-				if (cant > reader.CantDeCentroDistribucion()) {
-					JOptionPane.showMessageDialog(null, "Cantidad de centros excedida.");
-				}
-				else {
+				int cant = Integer.parseInt(txtCantidad.getText());	
+				if(validarInput(txtCantidad)) {
 					instancia = new instancia();
 					instancia.setCantidadCentrosAbrir(cant);
 					algoritmoGoloso g = new algoritmoGoloso(instancia);
 					g.calcularDistanciaCentro();
+					g.promedioDistanciaClientesCentro();
 					ArrayList<centroDistribucion> listaDefinitiva = g.abrirCentros();
-					mapa = new mapaResultado(listaDefinitiva);
+					ArrayList<cliente> listaClientes = instancia.getClientes();
+					mapa = new mapaResultado(listaDefinitiva, listaClientes, g);
 					mapa.getFrame().setVisible(true);
 					frame.setVisible(false);
-					
-				}	
+				}
 			}
 		});
 		btnGuardar.setBounds(293, 410, 89, 23);
 		frame.getContentPane().add(btnGuardar);
 	}
 
-	//GETTER
-	public JFrame getFrame() {
-		return frame;
+	//VALIDACIÓN DE LOS DATOS INGRESADOS POR EL USUARIO.
+	public boolean validarInput(JTextField txtCantidad) {
+		
+		int cant = Integer.parseInt(txtCantidad.getText());		
+		if (txtCantidad.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "No debe de estar vacío.");		
+			return false;
+		}
+		else if (cant > reader.CantDeCentroDistribucion()) {
+			JOptionPane.showMessageDialog(null, "Cantidad de centros excedida.");
+			return false;
+		}
+		else {		
+			try {Integer.parseInt(txtCantidad.getText());}
+			catch (NumberFormatException excepcion){
+				JOptionPane.showMessageDialog(null, "Ingrese solo números");
+				txtCantidad.setText(null);
+				return false; 
+			}
+		}
+		return true;	
 	}
+	//GETTER
+	public JFrame getFrame() {return frame;}
 }

@@ -7,10 +7,8 @@ import org.openstreetmap.gui.jmapviewer.Coordinate;
 import org.openstreetmap.gui.jmapviewer.JMapViewer;
 import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
 import org.openstreetmap.gui.jmapviewer.interfaces.MapMarker;
-import java.awt.EventQueue;
 import Logica.centroDistribucion;
 import Logica.cliente;
-import Logica.instancia;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -35,21 +33,15 @@ public class mapaDatos {
 		mapa = new JMapViewer();
 		frame.setBounds(650, 200, 700, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().add(mapa);
-		mapa.setLayout(null);
 		frame.setTitle("Clientes y Centros de Distribución");
-		Coordinate coordenadaUbicacion = new Coordinate(-34.54122953311153, -58.71367855692343);
-		mapa.setDisplayPosition(coordenadaUbicacion, 12);
-		
-		//AGREGA UN MARCADOR USTED ESTÁ AQUÍ	
-		MapMarker marcador = new MapMarkerDot("Usted está aquí", coordenadaUbicacion);
-		marcador.getStyle().setBackColor(Color.RED);
-		mapa.addMapMarker(marcador);
-		frame.getContentPane().setLayout(null);
+		Coordinate coordenadaUbicacion = new Coordinate(-34.540, -58.710);
+		mapa.setDisplayPosition(coordenadaUbicacion, 14);
 		frame.getContentPane().add(mapa);
 		mapa.setLayout(null);
 		
+		//BOTÓN PARA CONTINUAR A LAS ESTADÍSTICAS
 		JButton Botón = new JButton("Continuar");
+		Botón.setFont(new Font("Arial Narrow", Font.BOLD, 14));
 		Botón.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -58,10 +50,8 @@ public class mapaDatos {
 				frame.dispose();
 			}
 		});
-		Botón.setFont(new Font("Arial", Font.BOLD, 12));
-		Botón.setBounds(567, 518, 95, 21);
-		frame.getContentPane().add(Botón);
-		
+		Botón.setBounds(564, 532, 93, 21);
+		mapa.add(Botón);
 	}
 
 	//MÉTODO QUE MUESTRA LOS CENTROS DE DISTRIBUCIÓN EN EL MAPA

@@ -58,5 +58,4 @@ public class readerDataTest {
 		
 		Assert.igualesClientes(clientes, lista);
 	}
-
 }
